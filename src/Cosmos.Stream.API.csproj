@@ -1,0 +1,45 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <SignAssembly>true</SignAssembly>
+    <Company>Mobsites</Company>
+    <Authors>Allan Mobley</Authors>
+    <Copyright>© 2020 Mobsites</Copyright>
+    <Description>Stream data to and from Azure Cosmos using this extension to the built-in Azure Functions http trigger.</Description>
+    <PackageId>Mobsites.Cosmos.Stream.API</PackageId>
+    <IsPackable>true</IsPackable>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageIcon>mobsites-logo.png</PackageIcon>
+    <PackageIconUrl>https://github.com/Mobsites/Cosmos.Stream.API/src/assets/mobsites-logo.png</PackageIconUrl>
+    <PackageReleaseNotes>First preview release.</PackageReleaseNotes>
+    <PackageVersion>1.0.0-preview1</PackageVersion>
+    <PackageTags>azure;functions;serverless;cosmos;bindings;api:http;trigger;streams</PackageTags>
+    <PackageProjectUrl>https://github.com/Mobsites/Cosmos.Stream.API</PackageProjectUrl>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/Mobsites/Cosmos.Stream.API</RepositoryUrl>
+    <RootNamespace>Mobsites.Cosmos.Stream.API</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Azure.Cosmos" Version="4.0.0-preview3" />
+    <PackageReference Include="Microsoft.Azure.WebJobs" Version="3.0.14" />
+    <PackageReference Include="Microsoft.Azure.WebJobs.Extensions.Http" Version="3.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="assets\mobsites-logo.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include=".\..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+
+</Project>

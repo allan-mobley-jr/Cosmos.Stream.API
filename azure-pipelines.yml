@@ -1,0 +1,38 @@
+# Copyright (c) 2020 Allan Mobley. All rights reserved.
+# Licensed under the MIT License. See License.txt in the project root for license information.
+
+trigger:
+  - releases/*
+
+pool:
+  vmImage: ubuntu-latest
+
+variables:
+  configuration: 'Release'
+  projectPath: 'src/Cosmos.Stream.API.csproj'
+
+steps:
+
+- task: DotNetCoreCLI@2
+  displayName: Build
+  inputs:
+    command: build
+    configuration: --configuration $(configuration)
+    projects: $(projectPath)
+
+- task: DotNetCoreCLI@2
+  displayName: Pack
+  inputs:
+    command: pack
+    arguments: --configuration $(configuration)
+    packagesToPack: $(projectPath)
+    nobuild: true
+
+- task: NuGetCommand@2
+  displayName: Push
+  inputs:
+    command: push
+    packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
+    nuGetFeedType: external
+    publishFeedCredentials: Mobsites Nuget
+    allowPackageConflicts: true
